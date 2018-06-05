@@ -1,0 +1,40 @@
+
+    STEPS TO CREATE GITHUB USERS (USING THE API) USING RETROFIT AND GLIDE LIBRARY
+
+ 1-Create three different packages under your main package and name them as 'api', 'controller'
+   and model.
+
+ 2-a)First create a activity_main xml file and inside that create a recycler view and a textview
+     with SwipeRefreshLayout as the parent layout.
+   b)Create another xml file called row_user which will contain the views you want to show for
+     individual user.
+   c)Create another xml file called activity_detail whic will have the view you want to display
+     as the detail of the user inside the detailed screen.
+
+ 3-Under Api package
+   a)create a class called Client,inside which you will have a BASE_URL and
+     create a retrofit builder.
+   b)create an Interface called Service and use the GET method of retrofit to pass the path of
+     the api/url.
+
+ 4-Under Model package create a POJO class called Item.(Use serialized name inside the class)
+ 5-Create a Adapter class called ItemAdapter for the recycler view inside your main package and
+   inside the ViewHolder class set an onclicklistener to itemview use intent and pass the data.
+
+ 6-Under the Controller package
+   a)Create a class called DetailActivity,inside it use  fVID() and use getIntent() function to
+     get the data passed from the adapter class.And then set those data and image to the views
+     present in the xml file of the detail activity.
+     Override the OnCreateOptionsMenu method and inflate the menu item.
+     createShareForecastIntent is optional and is just to give the data to another activity when
+     you share the github user.
+
+   b)Create a class called MainActivity,inside it call a method called initViews and also
+     Initialize the swipeRefreshlayout and set an onrefreshListener to it.Inside the initView
+      method we set progress dialog and recycler view .
+      inside the onRefreshlistener method make a call to another method called loadJSON.
+
+   c)Inside loadJSON method create an instance of Client class and Service and make a callback.
+     Inside the onResponseCallback method,get the response body and set the adapter to
+     the recycler view and hide the progress bar.
+     
